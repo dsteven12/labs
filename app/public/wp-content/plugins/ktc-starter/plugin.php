@@ -21,20 +21,13 @@
 
 namespace LearnThePlug;
 
-use Whoops\Handler\PrettyPageHandler;
-use Whoops\Run;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'You\'re not allowed to be in here, Get outta\' my code!' );
+}
 
 require_once( __DIR__ . '/assets/vendor/autoload.php' );
 
-$whoops = new Run();
-$error_page = new PrettyPageHandler();
-$error_page->setEditor( 'sublime' );
-$whoops->pushHandler( $error_page );
-$whoops->register();
+add_action( 'init', __NAMESPACE__. '\launch' );
+function launch() {
 
-func_num_args();
-
-add_action( 'loop_start', __NAMESPACE__ . '\demo' );
-function demo() {
-	d( get_the_ID() );
 }
